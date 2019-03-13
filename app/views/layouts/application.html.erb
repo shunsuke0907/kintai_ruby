@@ -9,11 +9,18 @@
                                'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %> <%# IE対策 %>
   </head>
+  
   <body>
     <%= render 'layouts/header' %>
     
     <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      
       <%= yield %>
+      
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>
