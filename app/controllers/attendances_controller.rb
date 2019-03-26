@@ -37,6 +37,19 @@ class AttendancesController < ApplicationController
     end
   end
   
+  def create_csv
+    first_day = first_day(params[:date])
+    last_day = first_day.end_of_month
+    user = User.find(params[:id])
+    @attendances = user.attendances.where('worked_on >= ? and worked_on <= ?', first_day, last_day).order('worked_on')
+
+    respond_to do |format|
+      format.csv do
+        send_data render_to_string, filename: csv_file_name(user, first_day), type: :csv
+      end
+    end
+  end
+  
   private
   
     def attendances_params

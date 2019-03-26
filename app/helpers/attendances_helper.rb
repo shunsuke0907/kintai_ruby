@@ -40,4 +40,8 @@ module AttendancesHelper
       end
     end
   end
+  
+  def csv_file_name(user, date)
+    "user_id_#{user.id}_#{date.strftime('%Y_%m')}.csv"
+  end
 end
