@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :attendances, dependent: :destroy
+  has_many :attendance_edit_requests, dependent: :destroy
+  
+  belongs_to :base
   
   before_save { self.email = email.downcase }
   
