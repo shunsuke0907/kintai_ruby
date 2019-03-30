@@ -2,6 +2,21 @@
 
 <h1>ユーザ一覧</h1>
 
+<%= form_tag({controller: 'users', action: 'import_csv', method: 'post'}, {multipart: true}) do %>
+  <div class="csv_import">
+    <div class="input-group">
+      <label class="input-group-btn">
+        <span class="file_select_btn">
+          ファイルを選択<%= file_field_tag :file, style: 'display:none' %>
+        </span>
+      </label>
+      <input type="text" class="file_view" readonly="" placeholder="ファイルは選択されていません">
+    </div>
+
+    <%= submit_tag 'インポート', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
 <%= will_paginate %>
 
 <ul class="users">
@@ -9,3 +24,13 @@
 </ul>
 
 <%= will_paginate %>
+
+<script>
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.parent().parent().next(':text').val(label);
+  });
+</script>
+        

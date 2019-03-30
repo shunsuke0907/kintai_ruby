@@ -36,6 +36,10 @@ textarea {
   margin-bottom: 50px;
 }
 
+.font_color_wht {
+  color: white !important;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -149,5 +153,53 @@ input, textarea, select, .uneditable-input {
     width: 50%;
     padding: 0 10px;
     float: left;
+  }
+}
+
+.csv_import {
+  width: 300px;
+  .input-group {
+    margin-bottom: 15px;
+    .file_select_btn {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: normal;
+      text-align: center;
+      background-color: #dddddd;
+      border: 1px solid #bbbbbb;
+      border-radius: 4px 0 0 4px;
+      padding: 3px 5px;
+      margin-bottom: 0;
+      line-height: 1.428571429;
+      vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      background-image: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }.file_select_btn:hover {
+      background-color: #bbbbbb;
+    }
+    .file_view {
+      display: block;
+      font-size: 12px;
+      color: #555555;
+      background-color: #fff;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 0 4px 4px 0;
+      padding: 3px 5px;
+      margin-bottom: 0;
+      line-height: 1.428571429;
+      background-image: none;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+      -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
   }
 }

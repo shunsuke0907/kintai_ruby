@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: [:destroy, :edit_basic_info, :update_basic_info]
 
   def index
+
     @users = User.paginate(page: params[:page])
   end
   
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = 'ユーザーの新規作成に成功しました。'
+      flash[:success] = 'ユーザーの新規作成に成功しました'
       redirect_to @user
     else
       render 'new'
@@ -41,9 +42,10 @@ class UsersController < ApplicationController
   end
   
   def update
+    debugger
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "ユーザー情報を更新しました。"
+      flash[:success] = 'ユーザー情報を更新しました'
       redirect_to @user
     else
       render 'edit'
@@ -52,7 +54,7 @@ class UsersController < ApplicationController
   
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "削除しました。"
+    flash[:success] = '削除しました'
     redirect_to users_url
   end
   
@@ -63,11 +65,29 @@ class UsersController < ApplicationController
   def update_basic_info
     @user = User.find(params[:id])
     if @user.update_attributes(basic_info_params)
-      flash[:success] = "基本情報を更新しました。"
+      flash[:success] = '基本情報を更新しました'
       redirect_to @user   
     else
       render 'edit_basic_info'
     end
+  end
+  
+  def update_user_info
+    @user = User.find(params[:id])
+    if @user.update_attributes!(user_info_params)
+      flash[:success] = "ユーザー（id: #{params[:id]}）の情報を更新しました"
+      redirect_to users_path
+    else
+      debugger
+      redirect_to @user
+    end
+  end
+  
+  def import_csv
+   User.import(params[:file])
+  
+   flash[:notice] = 'インポートが完了しました'
+   redirect_to users_path
   end
   
   private
@@ -78,6 +98,21 @@ class UsersController < ApplicationController
     
     def basic_info_params
       params.require(:user).permit(:basic_time, :work_time)
+    end
+    
+    def user_info_params
+      params.require(:user).permit(
+        :name,
+        :email,
+        :department,
+        :employee_number,
+        :card_number,
+        :basic_time,
+        :designated_working_start_time,
+        :designated_working_end_time,
+        :password,
+        :password_confirmation
+      )
     end
     
     # beforeアクション

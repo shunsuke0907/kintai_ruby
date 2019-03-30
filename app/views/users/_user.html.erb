@@ -1,7 +1,21 @@
 <li>
-  <%= link_to user.name, user %>
-  <% if current_user.is_admin? && !current_user?(user) %>
-    ｜<%= link_to "基本情報編集", basic_info_path(user) %>
-    ｜<%= link_to "削除", user, method: :delete, data: { confirm: "削除してよろしいですか？" } %>
-  <% end %>
+  <div><%= user.name %></div>
+  <%= link_to "削除", user, method: :delete, class: 'btn btn-primary', data: { confirm: "削除してよろしいですか？" } %>
+  
+  <div class="panel-group" id="sampleAccordion<%= user.id %>">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" data-parent="#sampleAccordion2" class="btn-lg btn-primary font_color_wht" href="#AccordionCollapse<%= user.id %>" aria-expanded="false">編集</a>
+        </h3>
+      </div>
+      <div id="AccordionCollapse<%= user.id %>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+        <div class="panel-body">
+          <!--<div class="col-md-6 col-md-offset-3">-->
+            <%= render 'users/form_index_edit', { user: user } %>
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+  </div>
 </li>
