@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   def import_csv
    User.import(params[:file])
   
-   flash[:notice] = 'インポートが完了しました'
+   flash[:success] = 'インポートが完了しました'
    redirect_to users_path
   end
   
