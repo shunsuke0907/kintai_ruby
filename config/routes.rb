@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   
   resources :users do
     collection { post :import_csv }
+    collection { get :working_employee }
     resources :attendances, only: :create
   end
 end

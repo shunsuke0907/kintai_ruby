@@ -44,4 +44,9 @@ module AttendancesHelper
   def csv_file_name(user, date)
     "user_id_#{user.id}_#{date.strftime('%Y_%m')}.csv"
   end
+  
+  # 出勤中になっているユーザーのIDを取得
+  def working_on_user_ids
+    Attendance.where.not(started_at: nil).where(finished_at: nil).pluck('user_id')
+  end
 end

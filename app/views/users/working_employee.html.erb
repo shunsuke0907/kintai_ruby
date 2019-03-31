@@ -1,0 +1,27 @@
+<% provide(:title, @title) %>
+
+<h1><%= @title %></h1>
+
+<div class="table-responsive">
+  <% if @working_on_users.present? %>
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>社員番号</th>
+          <th>名前</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @working_on_users.each do |user| %>
+          <tr>
+            <td><%= user.employee_number.present? ? user.employee_number : '未設定'; %></td>
+            <td><%= user.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="text_align_c margin_t_30">現在出勤中の従業員はいません</p>
+  <% end %>
+</div>

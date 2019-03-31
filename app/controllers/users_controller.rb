@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: [:destroy, :edit_basic_info, :update_basic_info]
+  before_action :admin_user,     only: [:index, :destroy, :edit_basic_info, :update_basic_info, :import_csv]
 
   def index
-
     @users = User.paginate(page: params[:page])
   end
   
@@ -42,7 +41,6 @@ class UsersController < ApplicationController
   end
   
   def update
-    debugger
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = 'ユーザー情報を更新しました'
@@ -88,6 +86,11 @@ class UsersController < ApplicationController
   
    flash[:success] = 'インポートが完了しました'
    redirect_to users_path
+  end
+  
+  def working_employee
+    @title = '出勤社員一覧'
+    @working_on_users = User.where(id: working_on_user_ids)
   end
   
   private
