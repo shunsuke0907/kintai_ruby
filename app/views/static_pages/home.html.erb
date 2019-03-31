@@ -12,10 +12,11 @@
           <%= link_to "出勤社員一覧", working_employee_users_path, class: 'btn btn-primary width_max' %>
         </div>
         <div class="btn_home_menu">
-          <%= link_to "拠点情報の修正", users_path, class: 'btn btn-primary width_max' %>
+          <%= link_to "拠点情報の修正", bases_path, class: 'btn btn-primary width_max' %>
         </div>
         <div class="btn_home_menu">
-          <%= link_to "基本情報の修正", users_path, class: 'btn btn-primary width_max' %>
+          <%# FIXME: 要件定義がまだなので、出来次第修正する %>
+          <%= link_to "基本情報の修正", root_path, class: 'btn btn-primary width_max' %>
         </div>
       </div>
     <% else %>

@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     collection { get :working_employee }
     resources :attendances, only: :create
   end
+  
+  resources :bases
 end

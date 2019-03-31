@@ -1,0 +1,11 @@
+<tr>
+  <td class="text-center">
+    <%= link_to '編集', edit_basis_path(base.id), class: 'btn btn-primary' %>
+  </td>
+  <td class="text-center">
+    <%= link_to '削除', base, method: :delete, class: 'btn btn-primary', data: { confirm: '削除してよろしいですか？' } %>
+  </td>
+  <td class="text-center"><%= base.base_number %></td>
+  <td class="text-center"><%= base.base_name %></td>
+  <td class="text-center"><%= base.attendance_type %></td>
+</tr>

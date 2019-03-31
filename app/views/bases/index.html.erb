@@ -1,0 +1,23 @@
+<% provide(:title, @title) %>
+
+<h1><%= @title %></h1>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th class="text-center">拠点番号</th>
+        <th class="text-center">拠点名</th>
+        <th class="text-center">勤怠種類</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @bases %>
+    </tbody>
+  </table>
+  
+  <%= link_to '拠点情報の追加', new_basis_path, class: 'btn btn-primary' %>
+</div>
