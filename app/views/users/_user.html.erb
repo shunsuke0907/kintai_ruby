@@ -1,5 +1,5 @@
 <li>
-  <div><%= user.name %></div>
+  <div><%= user.name %>（<%= user.position %>）</div>
   <%= link_to "削除", user, method: :delete, class: 'btn btn-primary', data: { confirm: "削除してよろしいですか？" } %>
   
   <div class="panel-group" id="sampleAccordion<%= user.id %>">

@@ -92,6 +92,27 @@ p {
   }
 }
 
+.user_position {
+  display: inline-block;
+  font-size: 25px;
+  width: 150px;
+  height: 42px;
+  padding: 6px 0 3px 5px;
+  float: left;
+}
+
+.font_color_admin {
+  color: #a94442;
+}
+
+.font_color_user {
+  color: #3c763d;
+}
+
+.font_color_supervisor {
+  color: #337ab7;
+}
+
 /* various */
 
 .debug_dump {
