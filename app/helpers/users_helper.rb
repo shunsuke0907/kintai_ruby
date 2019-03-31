@@ -19,8 +19,6 @@ module UsersHelper
       return 'user'
     when '上長'
       return 'supervisor'
-    when '管理者'
-      return 'admin'
     else
       return nil
     end

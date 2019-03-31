@@ -1,9 +1,17 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "勤怠管理システム", root_path, id: "logo" %>
-    <div class="user_position font_color_<%= position_in_english(current_user) %>">
-      <%= position_in_english(current_user) %>
-    </div>
+    
+    <% if is_admin? %>
+      <div class="user_position font_color_admin">
+        admin
+      </div>
+    <% else %>
+      <div class="user_position font_color_<%= position_in_english(current_user) %>">
+        <%= position_in_english(current_user) %>
+      </div>
+    <% end %>
+    
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "ホーム", root_path %></li>
