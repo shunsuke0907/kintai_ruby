@@ -17,7 +17,7 @@ User.create!(name:  "管理者",
 
 5.times do |n|
   name  = Faker::Name.name
-  email = "supervisor#{n+1}@example.com"
+  email = "superior#{n+1}@example.com"
   card_number = n+2 >= 10 ? "TEST00#{n+2}" : "TEST000#{n+2}";
   password = 'password'
   User.create!(name:  name,
