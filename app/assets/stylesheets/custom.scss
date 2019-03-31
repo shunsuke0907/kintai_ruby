@@ -32,6 +32,10 @@ textarea {
   }
 }
 
+.width_max {
+  width: 100%;
+}
+
 .margin_t_30 {
   margin-top: 30px;
 }
@@ -174,6 +178,22 @@ input, textarea, select, .uneditable-input {
 
 /* btn */
 
+.box_home_menu {
+  overflow: hidden;
+  margin: 60px 5% 10px;
+  .btn_home_menu {
+    width: 25%;
+    padding: 0 10px;
+    float: left;
+  }
+  .btn_home_menu_user {
+    width: 25%;
+    padding: 0 10px;
+    margin: 0 37.5%;
+    float: left;
+  }
+}
+
 .box-attendance-edit {
   overflow: hidden;
   margin: 30px 5% 0;
@@ -183,6 +203,8 @@ input, textarea, select, .uneditable-input {
     float: left;
   }
 }
+
+/* csv */
 
 .csv_import {
   width: 300px;

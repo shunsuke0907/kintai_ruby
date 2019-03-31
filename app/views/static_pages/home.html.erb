@@ -1,9 +1,34 @@
 <% provide(:title, "ホーム") %>
 <div class="center jumbotron">
   <h1>勤怠管理システム</h1>
-  <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
   
-  <h2>
-    新規作成の方は<%= link_to "こちら", signup_path %>から
-  </h2>
+  <% if logged_in? %>
+    <% if is_admin? %>
+      <div class="box_home_menu">
+        <div class="btn_home_menu">
+          <%= link_to "ユーザ一覧", users_path, class: 'btn btn-primary width_max' %>
+        </div>
+        <div class="btn_home_menu">
+          <%= link_to "出勤社員一覧", working_employee_users_path, class: 'btn btn-primary width_max' %>
+        </div>
+        <div class="btn_home_menu">
+          <%= link_to "拠点情報の修正", users_path, class: 'btn btn-primary width_max' %>
+        </div>
+        <div class="btn_home_menu">
+          <%= link_to "基本情報の修正", users_path, class: 'btn btn-primary width_max' %>
+        </div>
+      </div>
+    <% else %>
+      <div class="box_home_menu">
+        <div class="btn_home_menu_user">
+          <%= link_to "勤怠ページ", current_user, class: 'btn btn-primary width_max' %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
+    <h2>
+      新規作成の方は<%= link_to "こちら", signup_path %>から
+    </h2>
+  <% end %>
 </div>
