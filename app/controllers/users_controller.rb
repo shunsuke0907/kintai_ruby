@@ -19,6 +19,14 @@ class UsersController < ApplicationController
     end
     @dates = user_attendances_month_date
     @worked_sum = @dates.where.not(started_at: nil).count
+    
+    @attendance_approval_request = AttendanceApprovalRequest.find_by(user_id: params[:id], target_month: @first_day)
+    if @attendance_approval_request.nil?
+      @attendance_approval_request = AttendanceApprovalRequest.new
+    end
+    @approval_status = approval_status(params[:id], @first_day)
+    @superior_list = superior_list
+    @approval_from_user = AttendanceApprovalRequest.where(approver: params[:id]).where(approval_status: 1)
   end
   
   def new

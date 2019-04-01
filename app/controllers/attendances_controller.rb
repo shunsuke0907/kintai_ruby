@@ -50,9 +50,37 @@ class AttendancesController < ApplicationController
     end
   end
   
+  def create_approval_status
+    user = User.find(params[:id])
+    target_day = first_day(params[:first_day])
+    record = user.attendance_approval_requests.build(target_month: target_day, approval_status: 1, approver: params[:attendance_approval_request][:approver])
+
+    if record.save
+      superior = User.find(params[:attendance_approval_request][:approver])
+      flash[:success] = "#{superior.name}上長に#{target_day.to_s(:year_month)}の勤怠承認を申請しました"
+      redirect_to user
+    else
+      flash[:danger] = '勤怠の申請に失敗しました'
+      redirect_to user
+    end
+  end
+  
+  def update_approval_status
+    debugger
+    first_day = first_day(params[:date])
+    last_day = first_day.end_of_month
+    user = User.find(params[:id])
+    @attendances = user.attendances.where('worked_on >= ? and worked_on <= ?', first_day, last_day).order('worked_on')
+    
+  end
+  
   private
   
     def attendances_params
       params.permit(attendances: [:started_at, :finished_at, :note])[:attendances]
+    end
+    
+    def approval_status_params
+      params.permit(attendances: [:approval_status, :approval_date, :approver])[:attendances]
     end
 end

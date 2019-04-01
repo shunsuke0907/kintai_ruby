@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get    'users/:id/attendances/:date/edit',       to: 'attendances#edit', as: :edit_attendances
   patch  'users/:id/attendances/:date/update',     to: 'attendances#update', as: :update_attendances
   get    'users/:id/attendances/:date/create_csv', to: 'attendances#create_csv', as: :create_csv_attendances
+  post   'users/:id/attendances/:date/create_approval_status', to: 'attendances#create_approval_status', as: :create_approval_status
+  patch  'users/:id/attendances/:date/update_approval_status', to: 'attendances#update_approval_status', as: :update_approval_status
   
   resources :users do
     collection { post :import_csv }

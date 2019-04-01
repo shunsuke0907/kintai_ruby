@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target_month: 2019-04-01
+  approval_status: 1
+  approval_date: 2019-04-01
+  approver: 1
+  user: one
+
+two:
+  target_month: 2019-04-01
+  approval_status: 1
+  approval_date: 2019-04-01
+  approver: 1
+  user: two

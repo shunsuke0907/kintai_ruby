@@ -49,4 +49,10 @@ module AttendancesHelper
   def working_on_user_ids
     Attendance.where.not(started_at: nil).where(finished_at: nil).pluck('user_id')
   end
+  
+  # 対象ユーザーの指定の月の勤怠の承認ステータスを取得
+  def approval_status(user_id, target_month)
+    data = AttendanceApprovalRequest.find_by(user_id: user_id, target_month: target_month)
+    return data.nil? ? nil : data.approval_status;
+  end
 end

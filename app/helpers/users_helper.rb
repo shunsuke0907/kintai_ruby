@@ -23,4 +23,9 @@ module UsersHelper
       return nil
     end
   end
+  
+  # 上長ユーザーを取得
+  def superior_list
+    User.where(position: 1).pluck(:name, :id)
+  end
 end

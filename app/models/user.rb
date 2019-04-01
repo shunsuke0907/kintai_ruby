@@ -3,6 +3,7 @@ class User < ApplicationRecord
   
   has_many :attendances, dependent: :destroy
   has_many :attendance_edit_requests, dependent: :destroy
+  has_many :attendance_approval_requests, dependent: :destroy
   
   belongs_to :base, optional: true
   

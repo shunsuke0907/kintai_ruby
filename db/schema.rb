@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190327155948) do
+ActiveRecord::Schema.define(version: 20190401174409) do
+
+  create_table "attendance_approval_requests", force: :cascade do |t|
+    t.date "target_month"
+    t.integer "approval_status", default: 0
+    t.date "approval_date"
+    t.integer "approver"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_attendance_approval_requests_on_user_id"
+  end
 
   create_table "attendance_edit_requests", force: :cascade do |t|
     t.date "worked_on"
@@ -40,6 +51,8 @@ ActiveRecord::Schema.define(version: 20190327155948) do
     t.string "business_outline"
     t.boolean "is_leaving_next_day", default: false
     t.integer "approval_status", default: 0
+    t.date "approval_date"
+    t.integer "approver"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
